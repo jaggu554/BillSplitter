@@ -1,46 +1,34 @@
 package com.example.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.model.Groups;
 import com.example.model.User;
-import com.example.repo.GroupsRepository;
 import com.example.repo.UserRepository;
 
 @Service
 public class UserService {
 
-	
-	@Autowired
-	private GroupsRepository repo;
-	
 	@Autowired
 	private UserRepository userRepo;
 	
-	@Autowired
-	private User user;
-	// first with in the groups i am fetching the userid who paid the bill and total bill paid by him
-	// how much he need to receive from the others users by subtraction his share.
-	public String createSplit(Groups users) {
-		
-		Float total=users.getAmount();
-		Integer ttlUsers=users.getUsers();
-		users.setToPay(total/ttlUsers);
-		Integer userId=users.getGroupId();
-		// fetching user details from groups and adding in the 
-		
-		user.setUserId(userId);
-		user.setPaidBy(total);
-		user.setNeedToReceive((total-(total/ttlUsers)));
-		// saving into the userDb
+	
+	public String createUser(User user) {
 		userRepo.save(user);
-		
-		// saving into the groupsDb
-		repo.save(users);
-		return users.getGroupName()+" splited successfully among users";
+		return "User Added Successfully...";
 	}
 	
+	public List<User> getAllUsers(){
+		return userRepo.findAll();
+	}
+
+	public Optional<User> getByUserId(Long id) {
+		
+		return userRepo.findById(id);
+	}
 	
 	
 	

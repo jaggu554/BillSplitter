@@ -9,25 +9,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name="groups_tbl")
-public class Groups {
+@Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Split {
 
-	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer groupId;
+	@Id
+	private Long id;
 	
-	private Integer users;
+	private Long expenseId;
 	
-	private Float amount;
+	private Long userId;
 	
-	private Float toPay;
-	
-	
-	private Integer userId;
-	private String groupName;
+	private double amountOwed;
 	
 }

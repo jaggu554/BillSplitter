@@ -12,18 +12,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table
-public class User {
+@Entity
+public class Expense {
 
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private Long payerId;
 	
-	private String email;
-	
-	
+	private double amount;
 }
